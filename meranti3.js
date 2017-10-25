@@ -40,7 +40,7 @@
     function draw() {
 
         var csv = d3.dsv(",", "text/csv;charset=big5");
-        csv("./data/MERANTI_landslide3.csv", function(data) {
+        csv("https://elsiehsieh.github.io/EGU_DIVD/MERANTI_landslide3.csv", function(data) {
 
             var timeAllparse = d3.time.format("%Y-%m-%e %H:%M").parse,
                 dateformat = d3.time.format("%Y/%m/%d"),
@@ -86,42 +86,54 @@
             var ndxGroupAll = ndx.groupAll();
 
             var geo1Dim = ndx.dimension(function(d) {
-                return d["geo1"]; }); //更改
+                return d["geo1"];
+            }); //更改
             var geo1Group = geo1Dim.group().reduceCount(); //更改
 
             var countyDim = ndx.dimension(function(d) {
-                return d["C_Name"]; });
+                return d["C_Name"];
+            });
             var countyDisastersGroup = countyDim.group().reduceCount(function(d) {
-                return d.Flood1 + d.Landslide1 + d.Traffic1; }); //更改
+                return d.Flood1 + d.Landslide1 + d.Traffic1;
+            }); //更改
             var townIdDim = ndx.dimension(function(d) {
-                return d["TOWN_ID"]; }); //更改
+                return d["TOWN_ID"];
+            }); //更改
 
             var timedim = ndx.dimension(function(d) {
-                return d.parseTime; });
+                return d.parseTime;
+            });
             var hourdim = ndx.dimension(function(d) {
-                return d3.time.hour(d.parseTime); });
+                return d3.time.hour(d.parseTime);
+            });
             var minTime = timedim.bottom(1)[0].parseTime;
             var maxTime = timedim.top(1)[0].parseTime;
 
             var disastertypes = ndx.dimension(function(d) {
-                return d["DisasterType"]; });
+                return d["DisasterType"];
+            });
             var disastertypesGroup = disastertypes.group().reduceCount();
             var debrisGroup = hourdim.group().reduceSum(function(d) {
-                return d.debris1; });
+                return d.debris1;
+            });
             var slopeGroup = hourdim.group().reduceSum(function(d) {
-                return d.slope1; });
+                return d.slope1;
+            });
             var rockGroup = hourdim.group().reduceSum(function(d) {
-                return d.rock1; });
+                return d.rock1;
+            });
             var roadGroup = hourdim.group().reduceSum(function(d) {
-                return d.road1; });
+                return d.road1;
+            });
             var roadbedGroup = hourdim.group().reduceSum(function(d) {
-                return d.roadbed1; });
+                return d.roadbed1;
+            });
 
-             var colorScale = d3.scale.ordinal().domain(["土石流", "邊坡坍方", "土石崩落", "道路阻斷", "路基流失"])
+            var colorScale = d3.scale.ordinal().domain(["土石流", "邊坡坍方", "土石崩落", "道路阻斷", "路基流失"])
                 .range(["#0ea7b5", "#ffbe4f", "#0c457d", "#6bd2db", "#e8702a"]);
 
-            var countycolor = d3.scale.ordinal().range(["#08589e","#2b8cbe", "#4eb3d3", "#7bccc4", "#a8ddb5", "#ccebc5"]);
-            
+            var countycolor = d3.scale.ordinal().range(["#08589e", "#2b8cbe", "#4eb3d3", "#7bccc4", "#a8ddb5", "#ccebc5"]);
+
 
             //cluster map - leaflet
             var MKmarker = dc_leaflet.markerChart("#map")
@@ -203,7 +215,8 @@
                 .stack(roadGroup, "道路阻斷")
                 .stack(roadbedGroup, "路基流失")
                 .colors(function(disastertype) {
-                    return colorScale(disastertype); })
+                    return colorScale(disastertype);
+                })
                 .elasticY(true)
                 .renderHorizontalGridLines(true)
                 .mouseZoomable(false)
@@ -211,7 +224,8 @@
                 .xAxisLabel("Date")
                 .centerBar(true)
                 .xUnits(function(d) {
-                    return 100 })
+                    return 100
+                })
                 .brushOn(true)
                 .xAxis().tickFormat(d3.time.format('%m/%d %H:%M'));
 
@@ -220,21 +234,28 @@
                 .width(680)
                 .dimension(townIdDim) //更改
                 .group(function(d) {
-                    return d.date; })
+                    return d.date;
+                })
                 .size(Infinity)
                 .columns([
                     function(d) {
-                        return d.C_Name; },
+                        return d.C_Name;
+                    },
                     function(d) {
-                        return d.T_Name; },
+                        return d.T_Name;
+                    },
                     function(d) {
-                        return d.date; },
+                        return d.date;
+                    },
                     function(d) {
-                        return d.tt; },
+                        return d.tt;
+                    },
                     function(d) {
-                        return d.DisasterType; },
+                        return d.DisasterType;
+                    },
                     function(d) {
-                        return d.situation; },
+                        return d.situation;
+                    },
                 ])
                 .sortBy(function(d) {
                     return d.parseTime;
