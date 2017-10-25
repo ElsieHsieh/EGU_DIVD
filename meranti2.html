@@ -1,0 +1,101 @@
+<!DOCTYPE>
+<html>
+
+<head>
+    <title>Disaster Information Dashboard</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link type="text/css" rel="stylesheet" href="index.css">
+    <link type="text/css" rel="stylesheet" href="./css/dc.css" />
+    <link type="text/css" rel="stylesheet" href="./css/leaflet.css" />
+    <link type="text/css" rel="stylesheet" href="./css/leaflet-legend.css" />
+    <link type="text/css" rel="stylesheet" href="./css/MarkerCluster.Default.css" />
+    <link type="text/css" rel="stylesheet" href="./css/MarkerCluster.css" />
+    <script type="text/javascript" src="./js/jquery.min.js"></script>
+    <script type="text/javascript" src="meranti3.js"></script>
+    <script type="text/javascript" src="./js/d3.js"></script>
+    <script type="text/javascript" src="./js/crossfilter.js"></script>
+    <script type="text/javascript" src="./js/leaflet.js"></script>
+    <script type="text/javascript" src="./js/dc.js"></script>
+    <script type="text/javascript" src="./js/dc.leaflet2.js"></script>
+    <script type="text/javascript" src="./js/leaflet.markercluster.js"></script>
+    <!-- 最新編譯和最佳化的 CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.1/css/bootstrap.min.css">
+    <!-- 選擇性佈景主題 -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.1/css/bootstrap-theme.min.css">
+    <!-- 最新編譯和最佳化的 JavaScript -->
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.1/js/bootstrap.min.js"></script>
+    
+
+</head>
+
+<body>
+ <nav class="navbar navbar-default navbar-fixed-top">
+  <div class="container-fluid">
+  <div class="navbar-header">
+      <p style="font-size:25px ;margin-right: 15px;margin-top: 5px;"><b>Typhoon Meranti Disaster Information Dashboard</b></p>
+    </div>
+     <ul class="nav navbar-nav">
+          <li ><a href="index.html">Summary</a></li>
+         <li><a href="nepartak2.html">Typhoon Nepartak</a></li>
+          <li><a href="meranti2.html">Typhoon Meranti</a></li>
+          <li><a href="megi2.html">Typhoon Megi</a></li>
+        </ul>
+  </div>
+</nav>
+<div id="gotop">˄</div>
+<div id="top-bar-bottom"></div>
+<div class="container-fluid">
+  <div class="row">
+    <div class="col-xs-4">
+      <div><a href="javascript:dc.filterAll();dc.renderAll();" class="reset">Reset All</a></div>
+      <div id='map'></div>
+    </div>
+    <div class="col-xs-8">
+      <div class="row">
+
+        <div class="col-xs-3">
+          <div class="dis_pie" id='dis_pie'></div>
+        </div>
+        <div class="col-xs-6 ">
+          <div class="dis_county" id="chart-row-county"></div>
+        </div>
+        <div class="col-xs-3">
+          <div class="data_count">
+            <a class="filter-count" id="filter-data-count"></a>
+            <a class="total-count" id="data-count"></a>
+          </div>
+        </div>
+      </div>
+
+
+      <div class="row">
+        <div class="col-xs-12">
+          <div class="dis_time" id='dis_time'></div>
+        </div>
+      </div>
+
+    </div>
+    <div class="row">
+      <div class="col-xs-12">
+        <div class="table">
+          <div>
+            <strong id="tableName">Disaster Information List</strong>
+          </div>
+          <table class="table table-hover dc-data-table" id="dc-table-graph">
+            <thead>
+              <tr class="header">
+                <th class="dis_table_th_width">County</th>
+                <th class="dis_table_th_width">Town</th>
+                <th class="dis_table_th_width">Date</th>
+                <th class="dis_table_th_width">Time</th>
+                <th class="dis_table_th_width">Category</th>
+                <th class="dis_table_th_situationwidth">Description</th>
+              </tr>
+            </thead>
+          </table>
+        </div>
+      </div>
+    </div>
+  </body>
+  </html>

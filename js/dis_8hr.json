@@ -1,0 +1,11 @@
+var freqData=[
+{Time:'8/9_0-8',freq:{flood:46, landslide:1, traffic:7}}
+,{Time:'8/9_8-16',freq:{flood:74, landslide:6, traffic:22}}
+,{Time:'8/9_16-24',freq:{flood:71, landslide:13, traffic:25}}
+,{Time:'8/10_0-8',freq:{flood:31, landslide:3, traffic:14}}
+,{Time:'8/10_8-16',freq:{flood:27, landslide:23, traffic:18}}
+,{Time:'8/10_16-24',freq:{flood:13, landslide:28, traffic:28}}
+,{Time:'8/11_0-8',freq:{flood:7, landslide:9, traffic:3}}
+,{Time:'8/11_8-16',freq:{flood:9, landslide:39, traffic:13}}
+,{Time:'8/11_16-24',freq:{flood:27, landslide:17, traffic:12}}
+];
